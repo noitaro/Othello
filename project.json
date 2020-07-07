@@ -1,0 +1,8 @@
+{
+  "engine": "cocos2d-html5",
+  "packages": "packages",
+  "version": "2.4.0",
+  "name": "Othello",
+  "id": "36eab8b5-893e-457c-8dde-e1213f750afe",
+  "isNew": false
+}
