@@ -17,26 +17,30 @@ export default class CellScript extends cc.Component {
 
     // onLoad () {}
 
-    start () {
-        this.node.on('SetStatus', (status: CellStatus) => this.SetStatus(status));
-        // this.node.emit('SetStatus', CellStatus.Black);
-    }
+    // start () {}
 
     // update (dt) {}
 
     Status: CellStatus = CellStatus.Nothing;
 
-    SetStatus(status: CellStatus) {
+    SetStatus(status: CellStatus, delay: number) {
         this.Status = status
         const sprite = this.node.getComponent(cc.Sprite);
+        const animation = this.node.getComponent(cc.Animation);
 
         switch (status) {
             case CellStatus.Black:
-                sprite.spriteFrame = this.Black;
+                setTimeout(() => {
+                    sprite.spriteFrame = this.Black;
+                    animation.play();
+                }, delay * 100);
                 break;
         
             case CellStatus.White:
-                sprite.spriteFrame = this.Black;
+                setTimeout(() => {
+                    sprite.spriteFrame = this.White;
+                    animation.play();
+                }, delay * 100);
                 break;
             
             default:

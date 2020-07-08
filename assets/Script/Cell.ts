@@ -3,15 +3,14 @@ import ReverseGrid from './ReverseGrid';
 
 export default class Cell {
 
-    Status: CellStatus = null; // セルの状態。黒・白・空。
-    Grid: ReverseGrid = null;
+    // Grid: ReverseGrid = null;
     Position: cc.Vec2 = null; // 論理位置
     Rectangle: cc.Rect = null; // '物理位置
     Node: cc.Node = null;
 
     // コンストラクタ
     constructor(grid: ReverseGrid, position: cc.Vec2, node: cc.Node) {
-        this.Grid = grid;
+        // this.Grid = grid;
         this.Position = position;
         this.Node = node;
 
@@ -25,5 +24,14 @@ export default class Cell {
 
         this.Rectangle = rect;
         this.Node.setPosition(rect.x, rect.y);
+    }
+
+    GetStatus(): CellStatus {
+        const cellScript = this.Node.getComponent('CellScript');
+        return cellScript.Status;
+    }
+    SetStatus(status: CellStatus, delay: number = 0) {
+        const cellScript = this.Node.getComponent('CellScript');
+        cellScript.SetStatus(status, delay);
     }
 }
